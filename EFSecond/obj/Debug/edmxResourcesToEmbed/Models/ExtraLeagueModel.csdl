@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExtraLeagueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DRUZYNY">
+    <Key>
+      <PropertyRef Name="ID_DRUZYNY" />
+    </Key>
+    <Property Name="ID_DRUZYNY" Type="Int32" Nullable="false" />
+    <Property Name="ID_MIASTA" Type="Int32" Nullable="false" />
+    <Property Name="NAZWA_DRUZYNY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PUNKTY" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BRAMKI" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ILOSC_SPOTKAN" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="KARY">
+    <Key>
+      <PropertyRef Name="ID_SPOTKANIA" />
+      <PropertyRef Name="ID_DRUZYNY" />
+      <PropertyRef Name="ID_PILKARZA" />
+    </Key>
+    <Property Name="ID_SPOTKANIA" Type="Int32" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="Int32" Nullable="false" />
+    <Property Name="ID_PILKARZA" Type="Int32" Nullable="false" />
+    <Property Name="MINUTA_KARY" Type="Int32" />
+    <Property Name="KARA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MIASTA">
+    <Key>
+      <PropertyRef Name="ID_MIASTA" />
+    </Key>
+    <Property Name="ID_MIASTA" Type="Int32" Nullable="false" />
+    <Property Name="NAZWA_MIASTA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PILKARZE">
+    <Key>
+      <PropertyRef Name="ID_PILKARZA" />
+    </Key>
+    <Property Name="ID_PILKARZA" Type="Int32" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="Int32" />
+    <Property Name="IMIE_PILKARZA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NAZWISKO_PILKARZA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="WIEK_PILKARZA" Type="DateTime" Precision="3" />
+    <Property Name="POZYCJA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NARODOWOSC_PILKARZA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SEDZIOWIE">
+    <Key>
+      <PropertyRef Name="ID_SEDZI" />
+    </Key>
+    <Property Name="ID_SEDZI" Type="Int32" Nullable="false" />
+    <Property Name="IMIE_SEDZI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NAZWISKO_SEDZI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SPOTKANIA">
+    <Key>
+      <PropertyRef Name="ID_SPOTKANIA" />
+    </Key>
+    <Property Name="ID_SPOTKANIA" Type="Int32" Nullable="false" />
+    <Property Name="ID_SEDZI" Type="Int32" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="Int32" Nullable="false" />
+    <Property Name="ID_MIASTA" Type="Int32" Nullable="false" />
+    <Property Name="DRU_ID_DRUZYNY" Type="Int32" Nullable="false" />
+    <Property Name="BRAMKI_D1" Type="Int32" />
+    <Property Name="BRAMKI_D2" Type="Int32" />
+    <Property Name="DATA_SPOTKANIA" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TRENERZY">
+    <Key>
+      <PropertyRef Name="ID_TRENERA" />
+    </Key>
+    <Property Name="ID_TRENERA" Type="Int32" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="Int32" />
+    <Property Name="IMIE_TRENERA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NAZWISKO_TRENERA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="WIEK_TRENERA" Type="DateTime" Precision="3" />
+    <Property Name="NARODOWOSC_TRENERA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="WYNIK">
+    <Key>
+      <PropertyRef Name="ID_SPOTKANIA" />
+      <PropertyRef Name="ID_DRUZYNY" />
+      <PropertyRef Name="ID_PILKARZA" />
+    </Key>
+    <Property Name="ID_SPOTKANIA" Type="Int32" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="Int32" Nullable="false" />
+    <Property Name="ID_PILKARZA" Type="Int32" Nullable="false" />
+    <Property Name="MINUTA_WYNIKU" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="ExtraLeagueEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DRUZYNies" EntityType="Self.DRUZYNY" />
+    <EntitySet Name="KARies" EntityType="Self.KARY" />
+    <EntitySet Name="MIASTAs" EntityType="Self.MIASTA" />
+    <EntitySet Name="PILKARZEs" EntityType="Self.PILKARZE" />
+    <EntitySet Name="SEDZIOWIEs" EntityType="Self.SEDZIOWIE" />
+    <EntitySet Name="SPOTKANIAs" EntityType="Self.SPOTKANIA" />
+    <EntitySet Name="TRENERZies" EntityType="Self.TRENERZY" />
+    <EntitySet Name="WYNIKs" EntityType="Self.WYNIK" />
+  </EntityContainer>
+</Schema>

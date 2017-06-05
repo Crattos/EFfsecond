@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EFSecond.Models.DRUZYNY>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["IDSortParm"]">@Html.DisplayNameFor(model => model.ID_DRUZYNY)</a>
+</th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_MIASTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAZWA_DRUZYNY)
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["PUNKTYSortParm"]">@Html.DisplayNameFor(model => model.PUNKTY)</a>
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BRAMKI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILOSC_SPOTKAN)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.ID_DRUZYNY)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_MIASTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAZWA_DRUZYNY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PUNKTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRAMKI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ILOSC_SPOTKAN)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_DRUZYNY }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_DRUZYNY }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_DRUZYNY })
+        </td>
+    </tr>
+}
+
+</table>

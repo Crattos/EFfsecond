@@ -1,0 +1,34 @@
+﻿@model EFSecond.Models.SEDZIOWIE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SEDZIOWIE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IMIE_SEDZI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMIE_SEDZI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAZWISKO_SEDZI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAZWISKO_SEDZI)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_SEDZI }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

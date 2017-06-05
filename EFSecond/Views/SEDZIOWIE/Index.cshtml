@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EFSecond.Models.SEDZIOWIE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SEDZI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMIE_SEDZI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAZWISKO_SEDZI)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.ID_SEDZI)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMIE_SEDZI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAZWISKO_SEDZI)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_SEDZI }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_SEDZI }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_SEDZI })
+        </td>
+    </tr>
+}
+
+</table>

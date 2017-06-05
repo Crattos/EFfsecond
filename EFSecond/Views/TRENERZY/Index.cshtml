@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EFSecond.Models.TRENERZY>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_TRENERA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_DRUZYNY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMIE_TRENERA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAZWISKO_TRENERA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WIEK_TRENERA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NARODOWOSC_TRENERA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.ID_TRENERA)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_DRUZYNY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMIE_TRENERA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAZWISKO_TRENERA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WIEK_TRENERA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NARODOWOSC_TRENERA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TRENERA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_TRENERA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TRENERA })
+        </td>
+    </tr>
+}
+
+</table>

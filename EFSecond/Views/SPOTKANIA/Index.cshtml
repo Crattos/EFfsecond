@@ -1,0 +1,75 @@
+﻿@model IEnumerable<EFSecond.Models.SPOTKANIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SPOTKANIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SEDZI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_DRUZYNY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_MIASTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DRU_ID_DRUZYNY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BRAMKI_D1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BRAMKI_D2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATA_SPOTKANIA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.ID_SPOTKANIA)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_SEDZI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_DRUZYNY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_MIASTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DRU_ID_DRUZYNY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRAMKI_D1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRAMKI_D2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATA_SPOTKANIA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_SPOTKANIA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_SPOTKANIA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_SPOTKANIA })
+        </td>
+    </tr>
+}
+
+</table>

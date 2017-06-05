@@ -1,0 +1,58 @@
+﻿@model EFSecond.Models.DRUZYNY
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DRUZYNY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_MIASTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_MIASTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAZWA_DRUZYNY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAZWA_DRUZYNY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PUNKTY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PUNKTY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRAMKI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRAMKI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ILOSC_SPOTKAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ILOSC_SPOTKAN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_DRUZYNY }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

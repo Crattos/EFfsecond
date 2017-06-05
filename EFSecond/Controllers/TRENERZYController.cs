@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EFSecond.Models;
+using System.Data.Entity.SqlServer;
 
 namespace EFSecond.Controllers
 {
@@ -15,9 +16,70 @@ namespace EFSecond.Controllers
         private ExtraLeagueEntities1 db = new ExtraLeagueEntities1();
 
         // GET: TRENERZY
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string searchingString)
         {
-            return View(db.TRENERZY.ToList());
+            ViewData["IDDRUZYNYSortParm"] = sortOrder == "ID_DRUZYNY" ? "ID_DRUZYNY_desc" : "ID_DRUZYNY";
+            ViewData["IMIETRENERASortParm"] = sortOrder == "IMIE_TRENERA" ? "IMIE_TRENERA_desc" : "IMIE_TRENERA";
+            ViewData["NAZWISKOTRENERASortParm"] = sortOrder == "NAZWISKO_TRENERA" ? "NAZWISKO_TRENERA_desc" : "NAZWISKO_TRENERA";
+            ViewData["WIEKTRENERASortParm"] = sortOrder == "WIEK_TRENERA" ? "WIEK_TRENERA_desc" : "WIEK_TRENERA";
+            ViewData["NARODOWOSCTRENERASortParm"] = sortOrder == "NARODOWOSC_TRENERA" ? "NARODOWOSC_TRENERA_desc" : "NARODOWOSC_TRENERA";
+
+            ViewData["IDSortParm"] = String.IsNullOrEmpty(sortOrder) ? "id_desc" : "";
+
+            var trenerzy = from s in db.TRENERZY
+                           select s;
+            if (!String.IsNullOrEmpty(searchingString))
+            {
+                trenerzy = trenerzy.Where(s => s.IMIE_TRENERA.Contains(searchingString) ||
+                                            s.NAZWISKO_TRENERA.Contains(searchingString) ||
+                                            s.NARODOWOSC_TRENERA.Contains(searchingString) ||
+                                            SqlFunctions.StringConvert((decimal)s.ID_DRUZYNY).Contains(searchingString));
+            }
+
+            switch (sortOrder)
+            {
+
+                case "ID_DRUZYNY_desc":
+                    trenerzy = trenerzy.OrderByDescending(s => s.ID_DRUZYNY);
+                    break;
+                case "ID_DRUZYNY":
+                    trenerzy = trenerzy.OrderBy(s => s.ID_DRUZYNY);
+                    break;
+                case "IMIE_TRENERA_desc":
+                    trenerzy = trenerzy.OrderByDescending(s => s.IMIE_TRENERA);
+                    break;
+                case "IMIE_TRENERA":
+                    trenerzy = trenerzy.OrderBy(s => s.IMIE_TRENERA);
+                    break;
+                case "NAZWISKO_TRENERA_desc":
+                    trenerzy = trenerzy.OrderByDescending(s => s.NAZWISKO_TRENERA);
+                    break;
+                case "NAZWISKO_TRENERA":
+                    trenerzy = trenerzy.OrderBy(s => s.NAZWISKO_TRENERA);
+                    break;
+                case "wiek_pilkarza_desc":
+                    trenerzy = trenerzy.OrderByDescending(s => s.WIEK_TRENERA);
+                    break;
+                case "WIEK_PILKARZA":
+                    trenerzy = trenerzy.OrderBy(s => s.WIEK_TRENERA);
+                    break;
+                
+                case "WIEK_TRENERA_desc":
+                    trenerzy = trenerzy.OrderByDescending(s => s.NAZWISKO_TRENERA);
+                    break;
+                case "WIEK_TRENERA":
+                    trenerzy = trenerzy.OrderBy(s => s.NAZWISKO_TRENERA);
+                    break;
+
+                case "id_desc":
+                    trenerzy = trenerzy.OrderByDescending(s => s.ID_TRENERA);
+                    break;
+
+                default:
+                    trenerzy = trenerzy.OrderBy(s => s.ID_TRENERA);
+                    break;
+            }
+            return View(trenerzy.ToList()); 
         }
 
         // GET: TRENERZY/Details/5

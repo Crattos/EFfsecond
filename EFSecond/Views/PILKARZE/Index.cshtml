@@ -9,61 +9,74 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Wyszukaj: @Html.TextBox("SearchingString")
+        <input type="submit" class="btn btn-default" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID_PILKARZA)
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.IDSortParam})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_DRUZYNY)
+            @Html.ActionLink("ID_DRUZYNY", "Index", new { sortOrder = ViewBag.IDDRUZYNYSortParam })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IMIE_PILKARZA)
+            @Html.ActionLink("IMIE_PILKARZA", "Index", new { sortOrder = ViewBag.IMIEPILKARZASortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NAZWISKO_PILKARZA)
+            @Html.ActionLink("NAZWISKO_PILKARZA", "Index", new { sortOrder = ViewBag.NAZWISKOPILKARZASortParm })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WIEK_PILKARZA)
+            @Html.ActionLink("WIEK_PILKARZA", "Index", new { sortOrder = ViewBag.WIEKPILKARZASortParm })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.POZYCJA)
+            @Html.ActionLink("POZYCJA", "Index", new { sortOrder = ViewBag.POZYCJASortParm })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NARODOWOSC_PILKARZA)
+            @Html.ActionLink("NARODOWOSC_PILKARZA", "Index", new { sortOrder = ViewBag.NARODOWOSCPILKARZASortParm })
+
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID_PILKARZA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID_DRUZYNY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IMIE_PILKARZA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NAZWISKO_PILKARZA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WIEK_PILKARZA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.POZYCJA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NARODOWOSC_PILKARZA)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_PILKARZA }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_PILKARZA }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_PILKARZA })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_PILKARZA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_DRUZYNY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMIE_PILKARZA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAZWISKO_PILKARZA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WIEK_PILKARZA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.POZYCJA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NARODOWOSC_PILKARZA)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_PILKARZA }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_PILKARZA }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_PILKARZA })
+            </td>
+        </tr>
+    }
 
 </table>

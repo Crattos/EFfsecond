@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EFSecond.Models;
+using System.Data.Entity.SqlServer;
 
 namespace EFSecond.Controllers
 {
@@ -15,9 +16,49 @@ namespace EFSecond.Controllers
         private ExtraLeagueEntities1 db = new ExtraLeagueEntities1();
 
         // GET: SEDZIOWIE
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string searchingString)
         {
-            return View(db.SEDZIOWIE.ToList());
+          
+            ViewData["IMIESEDZISortParm"] = sortOrder == "IMIE_SEDZI" ? "IMIE_SEDZI_desc" : "IMIE_SEDZI";
+            ViewData["NAZWISKOSEDZISortParm"] = sortOrder == "NAZWISKO_SEDZI" ? "NAZWISKO_SEDZI_desc" : "NAZWISKO_SEDZI";
+           
+            ViewData["IDSortParm"] = String.IsNullOrEmpty(sortOrder) ? "id_desc" : "";
+
+            var sedzia = from s in db.SEDZIOWIE
+                           select s;
+            if (!String.IsNullOrEmpty(searchingString))
+            {
+                sedzia = sedzia.Where(s => s.IMIE_SEDZI.Contains(searchingString) ||
+                                            s.NAZWISKO_SEDZI.Contains(searchingString) ||
+                                            SqlFunctions.StringConvert((decimal)s.ID_SEDZI).Contains(searchingString));
+            }
+
+            switch (sortOrder)
+            {
+
+              
+                case "IMIE_SEDZI_desc":
+                    sedzia = sedzia.OrderByDescending(s => s.IMIE_SEDZI);
+                    break;
+                case "IMIE_SEDZI":
+                    sedzia = sedzia.OrderBy(s => s.IMIE_SEDZI);
+                    break;
+                case "NAZWISKO_SEDZI_desc":
+                    sedzia = sedzia.OrderByDescending(s => s.NAZWISKO_SEDZI);
+                    break;
+                case "NAZWISKO_SEDZI":
+                    sedzia = sedzia.OrderBy(s => s.NAZWISKO_SEDZI);
+                    break;
+                
+                case "id_desc":
+                    sedzia = sedzia.OrderByDescending(s => s.ID_SEDZI);
+                    break;
+
+                default:
+                    sedzia = sedzia.OrderBy(s => s.ID_SEDZI);
+                    break;
+            }
+            return View(sedzia.ToList());
         }
 
         // GET: SEDZIOWIE/Details/5

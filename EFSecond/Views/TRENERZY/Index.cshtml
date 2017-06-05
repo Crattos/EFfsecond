@@ -9,55 +9,67 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Wyszukaj: @Html.TextBox("SearchingString")
+        <input type="submit" class="btn btn-default" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID_TRENERA)
+            @Html.ActionLink("ID_TRENERA", "Index", new { sortOrder = ViewBag.IDSortParam })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_DRUZYNY)
+            @Html.ActionLink("ID_DRUZYNY", "Index", new { sortOrder = ViewBag.IDDRUZYNYSortParam })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IMIE_TRENERA)
+            @Html.ActionLink("IMIE_PILKARZA", "Index", new { sortOrder = ViewBag.IMIETRENERASortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NAZWISKO_TRENERA)
+            @Html.ActionLink("NAZWISKO_TRENERA", "Index", new { sortOrder = ViewBag.NAZWISKOTRENERASortParm })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WIEK_TRENERA)
+            @Html.ActionLink("WIEK_TRENERA", "Index", new { sortOrder = ViewBag.WIEKTRENERASortParm })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NARODOWOSC_TRENERA)
+            @Html.ActionLink("NARODOWOSC_TRENERA", "Index", new { sortOrder = ViewBag.NARODOWOSCTRENERASortParm })
+
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <th>
-            @Html.DisplayFor(modelItem => item.ID_TRENERA)
-        </th>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID_DRUZYNY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IMIE_TRENERA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NAZWISKO_TRENERA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WIEK_TRENERA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NARODOWOSC_TRENERA)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TRENERA }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_TRENERA }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TRENERA })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.ID_TRENERA)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_DRUZYNY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMIE_TRENERA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAZWISKO_TRENERA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WIEK_TRENERA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NARODOWOSC_TRENERA)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_TRENERA }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_TRENERA }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_TRENERA })
+            </td>
+        </tr>
+    }
 
 </table>

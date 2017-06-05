@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EFSecond.Models;
+using System.Data.Entity.SqlServer;
 
 namespace EFSecond.Controllers
 {
@@ -15,9 +16,82 @@ namespace EFSecond.Controllers
         private ExtraLeagueEntities1 db = new ExtraLeagueEntities1();
 
         // GET: SPOTKANIA
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string searchingString)
         {
-            return View(db.SPOTKANIA.ToList());
+            ViewData["IDSEDZISortParm"] = sortOrder == "ID_SEDZI" ? "ID_SEDZI_desc" : "ID_SEDZI";
+            ViewData["IDDRUZYNYSortParm"] = sortOrder == "ID_DRUZYNY" ? "ID_DRUZYNY_desc" : "ID_DRUZYNY";
+            ViewData["IDMIASTASortParm"] = sortOrder == "ID_MIASTA" ? "ID_MIASTA_desc" : "ID_MIASTA";
+            ViewData["DRUIDDRUZYNYSortParm"] = sortOrder == "DRU_ID_DRUZYNY" ? "DRU_ID_DRUZYNY_desc" : "DRU_ID_DRUZYNY";
+            ViewData["BRAMKID1SortParm"] = sortOrder == "BRAMKI_D1" ? "BRAMKI_D1_desc" : "BRAMKI_D1";
+            ViewData["BRAMKID2SortParm"] = sortOrder == "BRAMKI_D2" ? "BRAMKI_D2_desc" : "BRAMKI_D2";
+            ViewData["DATASPOTKANIASortParm"] = sortOrder == "DATA_SPOTKANIA" ? "DATA_SPOTKANIA_desc" : "DATA_SPOTKANIA";
+
+            ViewData["IDSortParm"] = String.IsNullOrEmpty(sortOrder) ? "id_desc" : "";
+
+            var spotkania = from s in db.SPOTKANIA
+                           select s;
+            if (!String.IsNullOrEmpty(searchingString))
+            {
+                spotkania = spotkania.Where(s => 
+                                            SqlFunctions.StringConvert((decimal)s.ID_DRUZYNY).Contains(searchingString) ||
+                                            SqlFunctions.StringConvert((decimal)s.DRU_ID_DRUZYNY).Contains(searchingString));
+            }
+
+            switch (sortOrder)
+            {
+
+                case "ID_DRUZYNY_desc":
+                    spotkania = spotkania.OrderByDescending(s => s.ID_DRUZYNY);
+                    break;
+                case "ID_DRUZYNY":
+                    spotkania = spotkania.OrderBy(s => s.ID_DRUZYNY);
+                    break;
+                case "ID_SEDZI_desc":
+                    spotkania = spotkania.OrderByDescending(s => s.ID_SEDZI);
+                    break;
+                case "ID_SEDZI":
+                    spotkania = spotkania.OrderBy(s => s.ID_SEDZI);
+                    break;
+                case "ID_MIASTA_desc":
+                    spotkania = spotkania.OrderByDescending(s => s.ID_MIASTA);
+                    break;
+                case "ID_MIASTA":
+                    spotkania = spotkania.OrderBy(s => s.ID_MIASTA);
+                    break;
+                case "DRU_ID_DRUZYNY_desc":
+                    spotkania = spotkania.OrderByDescending(s => s.DRU_ID_DRUZYNY);
+                    break;
+                case "DRU_ID_DRUZYNY":
+                    spotkania = spotkania.OrderBy(s => s.DRU_ID_DRUZYNY);
+                    break;
+                case "BRAMKI_D1_desc":
+                    spotkania = spotkania.OrderByDescending(s => s.BRAMKI_D1);
+                    break;
+                case "BRAMKI_D1":
+                    spotkania = spotkania.OrderBy(s => s.BRAMKI_D1);
+                    break;
+                case "BRAMKI_D2_desc":
+                    spotkania = spotkania.OrderByDescending(s => s.BRAMKI_D2);
+                    break;
+                case "BRAMKI_D2":
+                    spotkania = spotkania.OrderBy(s => s.BRAMKI_D2);
+                    break;
+                case "DATA_SPOTKANIA_desc":
+                    spotkania = spotkania.OrderByDescending(s => s.DATA_SPOTKANIA);
+                    break;
+                case "DATA_SPOTKANIA":
+                    spotkania = spotkania.OrderBy(s => s.DATA_SPOTKANIA);
+                    break;
+
+                case "id_desc":
+                    spotkania = spotkania.OrderByDescending(s => s.ID_SPOTKANIA);
+                    break;
+
+                default:
+                    spotkania = spotkania.OrderBy(s => s.ID_SPOTKANIA);
+                    break;
+            }
+            return View(spotkania.ToList());
         }
 
         // GET: SPOTKANIA/Details/5

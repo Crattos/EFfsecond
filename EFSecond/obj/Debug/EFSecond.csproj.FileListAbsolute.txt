@@ -66,6 +66,6 @@ D:\Projects\WebProjects\ASP.NETProjects\EFSecond\EFSecond\bin\Microsoft.AI.Depen
 D:\Projects\WebProjects\ASP.NETProjects\EFSecond\EFSecond\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Projects\WebProjects\ASP.NETProjects\EFSecond\EFSecond\bin\Microsoft.AI.WindowsServer.xml
 D:\Projects\WebProjects\ASP.NETProjects\EFSecond\EFSecond\bin\Microsoft.AI.Web.xml
-D:\Projects\WebProjects\ASP.NETProjects\EFSecond\EFSecond\obj\Debug\EFSecond.csprojResolveAssemblyReference.cache
 D:\Projects\WebProjects\ASP.NETProjects\EFSecond\EFSecond\obj\Debug\EFSecond.dll
 D:\Projects\WebProjects\ASP.NETProjects\EFSecond\EFSecond\obj\Debug\EFSecond.pdb
+D:\Projects\WebProjects\ASP.NETProjects\EFSecond\EFSecond\obj\Debug\EFSecond.csprojResolveAssemblyReference.cache

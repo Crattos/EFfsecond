@@ -11,9 +11,12 @@ namespace EFSecond.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class DRUZYNY
     {
+       
         public int ID_DRUZYNY { get; set; }
         public int ID_MIASTA { get; set; }
         public string NAZWA_DRUZYNY { get; set; }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EFSecond.Models;
+using System.Data.Entity.SqlServer;
 
 namespace EFSecond.Controllers
 {
@@ -15,13 +16,41 @@ namespace EFSecond.Controllers
         private ExtraLeagueEntities1 db = new ExtraLeagueEntities1();
 
         // GET: MIASTA
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string searchingString)
         {
-            return View(db.MIASTA.ToList());
+            ViewData["NAZWAMIASTASortParm"] = sortOrder == "NAZWA_MIASTA" ? "nazwa_miasta_desc" : "NAZWA_MIASTA";
+            ViewData["IDSortParm"] = String.IsNullOrEmpty(sortOrder) ? "id_desc" : "";
+
+            var miasta = from s in db.MIASTA
+                         select s;
+            if (!String.IsNullOrEmpty(searchingString))
+            {
+                miasta = miasta.Where(s => s.NAZWA_MIASTA.Contains(searchingString) || SqlFunctions.StringConvert((decimal)s.ID_MIASTA).Contains(searchingString));
+            }
+
+            switch (sortOrder)
+            {
+
+                case "nazwa_miasta_desc":
+                    miasta = miasta.OrderByDescending(s => s.NAZWA_MIASTA);
+                    break;
+                case "NAZWA_MIASTA":
+                    miasta = miasta.OrderBy(s => s.NAZWA_MIASTA);
+                    break;
+
+                case "id_desc":
+                    miasta = miasta.OrderByDescending(s => s.ID_MIASTA);
+                    break;
+
+                default:
+                    miasta = miasta.OrderBy(s => s.ID_MIASTA);
+                    break;
+            }
+            return View(miasta.ToList());
         }
 
-        // GET: MIASTA/Details/5
-        public ActionResult Details(int? id)
+            // GET: MIASTA/Details/5
+            public ActionResult Details(int? id)
         {
             if (id == null)
             {

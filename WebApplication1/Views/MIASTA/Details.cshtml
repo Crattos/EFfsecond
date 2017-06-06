@@ -1,0 +1,26 @@
+﻿@model EFSecond.Models.MIASTA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MIASTA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NAZWA_MIASTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAZWA_MIASTA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_MIASTA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

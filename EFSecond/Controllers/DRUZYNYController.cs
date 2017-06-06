@@ -78,6 +78,8 @@ namespace EFSecond.Controllers
             return View(druzyny.ToList());
         }
         // GET: DRUZYNY/Details/5
+        [Authorize]
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -93,6 +95,7 @@ namespace EFSecond.Controllers
         }
 
         // GET: DRUZYNY/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -103,6 +106,7 @@ namespace EFSecond.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         public ActionResult Create([Bind(Include = "ID_DRUZYNY,ID_MIASTA,NAZWA_DRUZYNY,PUNKTY,BRAMKI,ILOSC_SPOTKAN")] DRUZYNY dRUZYNY)
         {
             if (ModelState.IsValid)

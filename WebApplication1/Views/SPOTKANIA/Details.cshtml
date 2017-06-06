@@ -1,0 +1,74 @@
+﻿@model EFSecond.Models.SPOTKANIA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SPOTKANIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_SEDZI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_SEDZI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_DRUZYNY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_DRUZYNY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_MIASTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_MIASTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DRU_ID_DRUZYNY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DRU_ID_DRUZYNY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRAMKI_D1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRAMKI_D1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRAMKI_D2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRAMKI_D2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATA_SPOTKANIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATA_SPOTKANIA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_SPOTKANIA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

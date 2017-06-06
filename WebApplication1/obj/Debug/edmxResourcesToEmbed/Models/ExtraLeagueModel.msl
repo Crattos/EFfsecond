@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExtraLeagueModelStoreContainer" CdmEntityContainer="ExtraLeagueEntities1">
+    <EntitySetMapping Name="DRUZYNies">
+      <EntityTypeMapping TypeName="ExtraLeagueModel.DRUZYNY">
+        <MappingFragment StoreEntitySet="DRUZYNY">
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="ID_MIASTA" ColumnName="ID_MIASTA" />
+          <ScalarProperty Name="NAZWA_DRUZYNY" ColumnName="NAZWA_DRUZYNY" />
+          <ScalarProperty Name="PUNKTY" ColumnName="PUNKTY" />
+          <ScalarProperty Name="BRAMKI" ColumnName="BRAMKI" />
+          <ScalarProperty Name="ILOSC_SPOTKAN" ColumnName="ILOSC_SPOTKAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KARies">
+      <EntityTypeMapping TypeName="ExtraLeagueModel.KARY">
+        <MappingFragment StoreEntitySet="KARY">
+          <ScalarProperty Name="ID_SPOTKANIA" ColumnName="ID_SPOTKANIA" />
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="ID_PILKARZA" ColumnName="ID_PILKARZA" />
+          <ScalarProperty Name="MINUTA_KARY" ColumnName="MINUTA_KARY" />
+          <ScalarProperty Name="KARA" ColumnName="KARA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MIASTAs">
+      <EntityTypeMapping TypeName="ExtraLeagueModel.MIASTA">
+        <MappingFragment StoreEntitySet="MIASTA">
+          <ScalarProperty Name="ID_MIASTA" ColumnName="ID_MIASTA" />
+          <ScalarProperty Name="NAZWA_MIASTA" ColumnName="NAZWA_MIASTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PILKARZEs">
+      <EntityTypeMapping TypeName="ExtraLeagueModel.PILKARZE">
+        <MappingFragment StoreEntitySet="PILKARZE">
+          <ScalarProperty Name="ID_PILKARZA" ColumnName="ID_PILKARZA" />
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="IMIE_PILKARZA" ColumnName="IMIE_PILKARZA" />
+          <ScalarProperty Name="NAZWISKO_PILKARZA" ColumnName="NAZWISKO_PILKARZA" />
+          <ScalarProperty Name="WIEK_PILKARZA" ColumnName="WIEK_PILKARZA" />
+          <ScalarProperty Name="POZYCJA" ColumnName="POZYCJA" />
+          <ScalarProperty Name="NARODOWOSC_PILKARZA" ColumnName="NARODOWOSC_PILKARZA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEDZIOWIEs">
+      <EntityTypeMapping TypeName="ExtraLeagueModel.SEDZIOWIE">
+        <MappingFragment StoreEntitySet="SEDZIOWIE">
+          <ScalarProperty Name="ID_SEDZI" ColumnName="ID_SEDZI" />
+          <ScalarProperty Name="IMIE_SEDZI" ColumnName="IMIE_SEDZI" />
+          <ScalarProperty Name="NAZWISKO_SEDZI" ColumnName="NAZWISKO_SEDZI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPOTKANIAs">
+      <EntityTypeMapping TypeName="ExtraLeagueModel.SPOTKANIA">
+        <MappingFragment StoreEntitySet="SPOTKANIA">
+          <ScalarProperty Name="ID_SPOTKANIA" ColumnName="ID_SPOTKANIA" />
+          <ScalarProperty Name="ID_SEDZI" ColumnName="ID_SEDZI" />
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="ID_MIASTA" ColumnName="ID_MIASTA" />
+          <ScalarProperty Name="DRU_ID_DRUZYNY" ColumnName="DRU_ID_DRUZYNY" />
+          <ScalarProperty Name="BRAMKI_D1" ColumnName="BRAMKI_D1" />
+          <ScalarProperty Name="BRAMKI_D2" ColumnName="BRAMKI_D2" />
+          <ScalarProperty Name="DATA_SPOTKANIA" ColumnName="DATA_SPOTKANIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRENERZies">
+      <EntityTypeMapping TypeName="ExtraLeagueModel.TRENERZY">
+        <MappingFragment StoreEntitySet="TRENERZY">
+          <ScalarProperty Name="ID_TRENERA" ColumnName="ID_TRENERA" />
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="IMIE_TRENERA" ColumnName="IMIE_TRENERA" />
+          <ScalarProperty Name="NAZWISKO_TRENERA" ColumnName="NAZWISKO_TRENERA" />
+          <ScalarProperty Name="WIEK_TRENERA" ColumnName="WIEK_TRENERA" />
+          <ScalarProperty Name="NARODOWOSC_TRENERA" ColumnName="NARODOWOSC_TRENERA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WYNIKs">
+      <EntityTypeMapping TypeName="ExtraLeagueModel.WYNIK">
+        <MappingFragment StoreEntitySet="WYNIK">
+          <ScalarProperty Name="ID_SPOTKANIA" ColumnName="ID_SPOTKANIA" />
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="ID_PILKARZA" ColumnName="ID_PILKARZA" />
+          <ScalarProperty Name="MINUTA_WYNIKU" ColumnName="MINUTA_WYNIKU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

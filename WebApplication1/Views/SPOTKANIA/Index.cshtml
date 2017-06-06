@@ -1,0 +1,111 @@
+﻿@model IEnumerable<EFSecond.Models.SPOTKANIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Wyszukaj: @Html.TextBox("SearchingString")
+        <input type="submit" class="btn btn-default" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.IDSortParm })
+
+
+        </th>
+        <th>
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.IDSEDZISortParm })
+
+
+        </th>
+        <th>
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.IDDRUZYNYSortParm })
+
+
+        </th>
+        <th>
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.IDMIASTASortParm })
+
+
+        </th>
+        <th>
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.DRUIDDRUZYNYSortParm })
+
+
+        </th>
+        <th>
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.BRAMKID1SortParm })
+
+
+        </th>
+        <th>
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.BRAMKID2SortParm })
+
+
+        </th>
+        <th>
+            @Html.ActionLink("ID_PILKARZA", "Index", new { sortOrder = ViewBag.DATASPOTKANIASortParm })
+
+
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.ID_SPOTKANIA)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_SEDZI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_DRUZYNY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_MIASTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DRU_ID_DRUZYNY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRAMKI_D1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRAMKI_D2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATA_SPOTKANIA)
+        </td>
+        <td>
+           
+            @if (User.Identity.IsAuthenticated)
+                { <div>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_SPOTKANIA }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_SPOTKANIA })|
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_SPOTKANIA })
+            </div>
+            }
+
+            else
+            {
+                <div>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID_SPOTKANIA })
+                </div>
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model EFSecond.Models.TRENERZY
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TRENERZY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_DRUZYNY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_DRUZYNY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMIE_TRENERA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMIE_TRENERA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAZWISKO_TRENERA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAZWISKO_TRENERA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WIEK_TRENERA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WIEK_TRENERA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NARODOWOSC_TRENERA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NARODOWOSC_TRENERA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_TRENERA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

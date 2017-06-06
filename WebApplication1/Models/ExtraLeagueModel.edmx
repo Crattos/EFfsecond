@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ExtraLeagueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DRUZYNY">
+          <Key>
+            <PropertyRef Name="ID_DRUZYNY" />
+          </Key>
+          <Property Name="ID_DRUZYNY" Type="int" Nullable="false" />
+          <Property Name="ID_MIASTA" Type="int" Nullable="false" />
+          <Property Name="NAZWA_DRUZYNY" Type="varchar" MaxLength="25" />
+          <Property Name="PUNKTY" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="BRAMKI" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ILOSC_SPOTKAN" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="KARY">
+          <Key>
+            <PropertyRef Name="ID_SPOTKANIA" />
+            <PropertyRef Name="ID_DRUZYNY" />
+            <PropertyRef Name="ID_PILKARZA" />
+          </Key>
+          <Property Name="ID_SPOTKANIA" Type="int" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="int" Nullable="false" />
+          <Property Name="ID_PILKARZA" Type="int" Nullable="false" />
+          <Property Name="MINUTA_KARY" Type="int" />
+          <Property Name="KARA" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="MIASTA">
+          <Key>
+            <PropertyRef Name="ID_MIASTA" />
+          </Key>
+          <Property Name="ID_MIASTA" Type="int" Nullable="false" />
+          <Property Name="NAZWA_MIASTA" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="PILKARZE">
+          <Key>
+            <PropertyRef Name="ID_PILKARZA" />
+          </Key>
+          <Property Name="ID_PILKARZA" Type="int" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="int" />
+          <Property Name="IMIE_PILKARZA" Type="varchar" MaxLength="20" />
+          <Property Name="NAZWISKO_PILKARZA" Type="varchar" MaxLength="30" />
+          <Property Name="WIEK_PILKARZA" Type="datetime" />
+          <Property Name="POZYCJA" Type="varchar" MaxLength="20" />
+          <Property Name="NARODOWOSC_PILKARZA" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SEDZIOWIE">
+          <Key>
+            <PropertyRef Name="ID_SEDZI" />
+          </Key>
+          <Property Name="ID_SEDZI" Type="int" Nullable="false" />
+          <Property Name="IMIE_SEDZI" Type="varchar" MaxLength="20" />
+          <Property Name="NAZWISKO_SEDZI" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="SPOTKANIA">
+          <Key>
+            <PropertyRef Name="ID_SPOTKANIA" />
+          </Key>
+          <Property Name="ID_SPOTKANIA" Type="int" Nullable="false" />
+          <Property Name="ID_SEDZI" Type="int" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="int" Nullable="false" />
+          <Property Name="ID_MIASTA" Type="int" Nullable="false" />
+          <Property Name="DRU_ID_DRUZYNY" Type="int" Nullable="false" />
+          <Property Name="BRAMKI_D1" Type="int" />
+          <Property Name="BRAMKI_D2" Type="int" />
+          <Property Name="DATA_SPOTKANIA" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TRENERZY">
+          <Key>
+            <PropertyRef Name="ID_TRENERA" />
+          </Key>
+          <Property Name="ID_TRENERA" Type="int" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="int" />
+          <Property Name="IMIE_TRENERA" Type="varchar" MaxLength="20" />
+          <Property Name="NAZWISKO_TRENERA" Type="varchar" MaxLength="30" />
+          <Property Name="WIEK_TRENERA" Type="datetime" />
+          <Property Name="NARODOWOSC_TRENERA" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WYNIK">
+          <Key>
+            <PropertyRef Name="ID_SPOTKANIA" />
+            <PropertyRef Name="ID_DRUZYNY" />
+            <PropertyRef Name="ID_PILKARZA" />
+          </Key>
+          <Property Name="ID_SPOTKANIA" Type="int" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="int" Nullable="false" />
+          <Property Name="ID_PILKARZA" Type="int" Nullable="false" />
+          <Property Name="MINUTA_WYNIKU" Type="int" />
+        </EntityType>
+        <EntityContainer Name="ExtraLeagueModelStoreContainer">
+          <EntitySet Name="DRUZYNY" EntityType="Self.DRUZYNY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KARY" EntityType="Self.KARY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MIASTA" EntityType="Self.MIASTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PILKARZE" EntityType="Self.PILKARZE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEDZIOWIE" EntityType="Self.SEDZIOWIE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SPOTKANIA" EntityType="Self.SPOTKANIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRENERZY" EntityType="Self.TRENERZY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WYNIK" EntityType="Self.WYNIK" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExtraLeagueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DRUZYNY">
+          <Key>
+            <PropertyRef Name="ID_DRUZYNY" />
+          </Key>
+          <Property Name="ID_DRUZYNY" Type="Int32" Nullable="false" />
+          <Property Name="ID_MIASTA" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA_DRUZYNY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PUNKTY" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BRAMKI" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ILOSC_SPOTKAN" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="KARY">
+          <Key>
+            <PropertyRef Name="ID_SPOTKANIA" />
+            <PropertyRef Name="ID_DRUZYNY" />
+            <PropertyRef Name="ID_PILKARZA" />
+          </Key>
+          <Property Name="ID_SPOTKANIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="Int32" Nullable="false" />
+          <Property Name="ID_PILKARZA" Type="Int32" Nullable="false" />
+          <Property Name="MINUTA_KARY" Type="Int32" />
+          <Property Name="KARA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MIASTA">
+          <Key>
+            <PropertyRef Name="ID_MIASTA" />
+          </Key>
+          <Property Name="ID_MIASTA" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA_MIASTA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PILKARZE">
+          <Key>
+            <PropertyRef Name="ID_PILKARZA" />
+          </Key>
+          <Property Name="ID_PILKARZA" Type="Int32" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="Int32" />
+          <Property Name="IMIE_PILKARZA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NAZWISKO_PILKARZA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="WIEK_PILKARZA" Type="DateTime" Precision="3" />
+          <Property Name="POZYCJA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NARODOWOSC_PILKARZA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SEDZIOWIE">
+          <Key>
+            <PropertyRef Name="ID_SEDZI" />
+          </Key>
+          <Property Name="ID_SEDZI" Type="Int32" Nullable="false" />
+          <Property Name="IMIE_SEDZI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NAZWISKO_SEDZI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SPOTKANIA">
+          <Key>
+            <PropertyRef Name="ID_SPOTKANIA" />
+          </Key>
+          <Property Name="ID_SPOTKANIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_SEDZI" Type="Int32" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="Int32" Nullable="false" />
+          <Property Name="ID_MIASTA" Type="Int32" Nullable="false" />
+          <Property Name="DRU_ID_DRUZYNY" Type="Int32" Nullable="false" />
+          <Property Name="BRAMKI_D1" Type="Int32" />
+          <Property Name="BRAMKI_D2" Type="Int32" />
+          <Property Name="DATA_SPOTKANIA" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TRENERZY">
+          <Key>
+            <PropertyRef Name="ID_TRENERA" />
+          </Key>
+          <Property Name="ID_TRENERA" Type="Int32" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="Int32" />
+          <Property Name="IMIE_TRENERA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NAZWISKO_TRENERA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="WIEK_TRENERA" Type="DateTime" Precision="3" />
+          <Property Name="NARODOWOSC_TRENERA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WYNIK">
+          <Key>
+            <PropertyRef Name="ID_SPOTKANIA" />
+            <PropertyRef Name="ID_DRUZYNY" />
+            <PropertyRef Name="ID_PILKARZA" />
+          </Key>
+          <Property Name="ID_SPOTKANIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_DRUZYNY" Type="Int32" Nullable="false" />
+          <Property Name="ID_PILKARZA" Type="Int32" Nullable="false" />
+          <Property Name="MINUTA_WYNIKU" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="ExtraLeagueEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DRUZYNies" EntityType="Self.DRUZYNY" />
+          <EntitySet Name="KARies" EntityType="Self.KARY" />
+          <EntitySet Name="MIASTAs" EntityType="Self.MIASTA" />
+          <EntitySet Name="PILKARZEs" EntityType="Self.PILKARZE" />
+          <EntitySet Name="SEDZIOWIEs" EntityType="Self.SEDZIOWIE" />
+          <EntitySet Name="SPOTKANIAs" EntityType="Self.SPOTKANIA" />
+          <EntitySet Name="TRENERZies" EntityType="Self.TRENERZY" />
+          <EntitySet Name="WYNIKs" EntityType="Self.WYNIK" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExtraLeagueModelStoreContainer" CdmEntityContainer="ExtraLeagueEntities1">
+          <EntitySetMapping Name="DRUZYNies">
+            <EntityTypeMapping TypeName="ExtraLeagueModel.DRUZYNY">
+              <MappingFragment StoreEntitySet="DRUZYNY">
+                <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+                <ScalarProperty Name="ID_MIASTA" ColumnName="ID_MIASTA" />
+                <ScalarProperty Name="NAZWA_DRUZYNY" ColumnName="NAZWA_DRUZYNY" />
+                <ScalarProperty Name="PUNKTY" ColumnName="PUNKTY" />
+                <ScalarProperty Name="BRAMKI" ColumnName="BRAMKI" />
+                <ScalarProperty Name="ILOSC_SPOTKAN" ColumnName="ILOSC_SPOTKAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KARies">
+            <EntityTypeMapping TypeName="ExtraLeagueModel.KARY">
+              <MappingFragment StoreEntitySet="KARY">
+                <ScalarProperty Name="ID_SPOTKANIA" ColumnName="ID_SPOTKANIA" />
+                <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+                <ScalarProperty Name="ID_PILKARZA" ColumnName="ID_PILKARZA" />
+                <ScalarProperty Name="MINUTA_KARY" ColumnName="MINUTA_KARY" />
+                <ScalarProperty Name="KARA" ColumnName="KARA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MIASTAs">
+            <EntityTypeMapping TypeName="ExtraLeagueModel.MIASTA">
+              <MappingFragment StoreEntitySet="MIASTA">
+                <ScalarProperty Name="ID_MIASTA" ColumnName="ID_MIASTA" />
+                <ScalarProperty Name="NAZWA_MIASTA" ColumnName="NAZWA_MIASTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PILKARZEs">
+            <EntityTypeMapping TypeName="ExtraLeagueModel.PILKARZE">
+              <MappingFragment StoreEntitySet="PILKARZE">
+                <ScalarProperty Name="ID_PILKARZA" ColumnName="ID_PILKARZA" />
+                <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+                <ScalarProperty Name="IMIE_PILKARZA" ColumnName="IMIE_PILKARZA" />
+                <ScalarProperty Name="NAZWISKO_PILKARZA" ColumnName="NAZWISKO_PILKARZA" />
+                <ScalarProperty Name="WIEK_PILKARZA" ColumnName="WIEK_PILKARZA" />
+                <ScalarProperty Name="POZYCJA" ColumnName="POZYCJA" />
+                <ScalarProperty Name="NARODOWOSC_PILKARZA" ColumnName="NARODOWOSC_PILKARZA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEDZIOWIEs">
+            <EntityTypeMapping TypeName="ExtraLeagueModel.SEDZIOWIE">
+              <MappingFragment StoreEntitySet="SEDZIOWIE">
+                <ScalarProperty Name="ID_SEDZI" ColumnName="ID_SEDZI" />
+                <ScalarProperty Name="IMIE_SEDZI" ColumnName="IMIE_SEDZI" />
+                <ScalarProperty Name="NAZWISKO_SEDZI" ColumnName="NAZWISKO_SEDZI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPOTKANIAs">
+            <EntityTypeMapping TypeName="ExtraLeagueModel.SPOTKANIA">
+              <MappingFragment StoreEntitySet="SPOTKANIA">
+                <ScalarProperty Name="ID_SPOTKANIA" ColumnName="ID_SPOTKANIA" />
+                <ScalarProperty Name="ID_SEDZI" ColumnName="ID_SEDZI" />
+                <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+                <ScalarProperty Name="ID_MIASTA" ColumnName="ID_MIASTA" />
+                <ScalarProperty Name="DRU_ID_DRUZYNY" ColumnName="DRU_ID_DRUZYNY" />
+                <ScalarProperty Name="BRAMKI_D1" ColumnName="BRAMKI_D1" />
+                <ScalarProperty Name="BRAMKI_D2" ColumnName="BRAMKI_D2" />
+                <ScalarProperty Name="DATA_SPOTKANIA" ColumnName="DATA_SPOTKANIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRENERZies">
+            <EntityTypeMapping TypeName="ExtraLeagueModel.TRENERZY">
+              <MappingFragment StoreEntitySet="TRENERZY">
+                <ScalarProperty Name="ID_TRENERA" ColumnName="ID_TRENERA" />
+                <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+                <ScalarProperty Name="IMIE_TRENERA" ColumnName="IMIE_TRENERA" />
+                <ScalarProperty Name="NAZWISKO_TRENERA" ColumnName="NAZWISKO_TRENERA" />
+                <ScalarProperty Name="WIEK_TRENERA" ColumnName="WIEK_TRENERA" />
+                <ScalarProperty Name="NARODOWOSC_TRENERA" ColumnName="NARODOWOSC_TRENERA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WYNIKs">
+            <EntityTypeMapping TypeName="ExtraLeagueModel.WYNIK">
+              <MappingFragment StoreEntitySet="WYNIK">
+                <ScalarProperty Name="ID_SPOTKANIA" ColumnName="ID_SPOTKANIA" />
+                <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+                <ScalarProperty Name="ID_PILKARZA" ColumnName="ID_PILKARZA" />
+                <ScalarProperty Name="MINUTA_WYNIKU" ColumnName="MINUTA_WYNIKU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

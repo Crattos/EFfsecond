@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExtraLeagueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DRUZYNY">
+    <Key>
+      <PropertyRef Name="ID_DRUZYNY" />
+    </Key>
+    <Property Name="ID_DRUZYNY" Type="int" Nullable="false" />
+    <Property Name="ID_MIASTA" Type="int" Nullable="false" />
+    <Property Name="NAZWA_DRUZYNY" Type="varchar" MaxLength="25" />
+    <Property Name="PUNKTY" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="BRAMKI" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="ILOSC_SPOTKAN" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="KARY">
+    <Key>
+      <PropertyRef Name="ID_SPOTKANIA" />
+      <PropertyRef Name="ID_DRUZYNY" />
+      <PropertyRef Name="ID_PILKARZA" />
+    </Key>
+    <Property Name="ID_SPOTKANIA" Type="int" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="int" Nullable="false" />
+    <Property Name="ID_PILKARZA" Type="int" Nullable="false" />
+    <Property Name="MINUTA_KARY" Type="int" />
+    <Property Name="KARA" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="MIASTA">
+    <Key>
+      <PropertyRef Name="ID_MIASTA" />
+    </Key>
+    <Property Name="ID_MIASTA" Type="int" Nullable="false" />
+    <Property Name="NAZWA_MIASTA" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="PILKARZE">
+    <Key>
+      <PropertyRef Name="ID_PILKARZA" />
+    </Key>
+    <Property Name="ID_PILKARZA" Type="int" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="int" />
+    <Property Name="IMIE_PILKARZA" Type="varchar" MaxLength="20" />
+    <Property Name="NAZWISKO_PILKARZA" Type="varchar" MaxLength="30" />
+    <Property Name="WIEK_PILKARZA" Type="datetime" />
+    <Property Name="POZYCJA" Type="varchar" MaxLength="20" />
+    <Property Name="NARODOWOSC_PILKARZA" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SEDZIOWIE">
+    <Key>
+      <PropertyRef Name="ID_SEDZI" />
+    </Key>
+    <Property Name="ID_SEDZI" Type="int" Nullable="false" />
+    <Property Name="IMIE_SEDZI" Type="varchar" MaxLength="20" />
+    <Property Name="NAZWISKO_SEDZI" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="SPOTKANIA">
+    <Key>
+      <PropertyRef Name="ID_SPOTKANIA" />
+    </Key>
+    <Property Name="ID_SPOTKANIA" Type="int" Nullable="false" />
+    <Property Name="ID_SEDZI" Type="int" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="int" Nullable="false" />
+    <Property Name="ID_MIASTA" Type="int" Nullable="false" />
+    <Property Name="DRU_ID_DRUZYNY" Type="int" Nullable="false" />
+    <Property Name="BRAMKI_D1" Type="int" />
+    <Property Name="BRAMKI_D2" Type="int" />
+    <Property Name="DATA_SPOTKANIA" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TRENERZY">
+    <Key>
+      <PropertyRef Name="ID_TRENERA" />
+    </Key>
+    <Property Name="ID_TRENERA" Type="int" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="int" />
+    <Property Name="IMIE_TRENERA" Type="varchar" MaxLength="20" />
+    <Property Name="NAZWISKO_TRENERA" Type="varchar" MaxLength="30" />
+    <Property Name="WIEK_TRENERA" Type="datetime" />
+    <Property Name="NARODOWOSC_TRENERA" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="WYNIK">
+    <Key>
+      <PropertyRef Name="ID_SPOTKANIA" />
+      <PropertyRef Name="ID_DRUZYNY" />
+      <PropertyRef Name="ID_PILKARZA" />
+    </Key>
+    <Property Name="ID_SPOTKANIA" Type="int" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="int" Nullable="false" />
+    <Property Name="ID_PILKARZA" Type="int" Nullable="false" />
+    <Property Name="MINUTA_WYNIKU" Type="int" />
+  </EntityType>
+  <EntityContainer Name="ExtraLeagueModelStoreContainer">
+    <EntitySet Name="DRUZYNY" EntityType="Self.DRUZYNY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KARY" EntityType="Self.KARY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIASTA" EntityType="Self.MIASTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PILKARZE" EntityType="Self.PILKARZE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEDZIOWIE" EntityType="Self.SEDZIOWIE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPOTKANIA" EntityType="Self.SPOTKANIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRENERZY" EntityType="Self.TRENERZY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WYNIK" EntityType="Self.WYNIK" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
